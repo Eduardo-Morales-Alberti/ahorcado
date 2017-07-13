@@ -25,7 +25,9 @@ if(!isset($_SESSION["ahorcado"]) || isset($_REQUEST["reset"])){
 
 	$ahoracadocl = new Ahorcado($palabras);
 	$_SESSION["ahorcado"] = $ahoracadocl;
-
+	$respuesta["reset"] = true;
+	/*Convertimos la respuesta en formato json*/
+	echo json_encode($respuesta);
 	
 }else{
 	
@@ -52,16 +54,18 @@ if(!isset($_SESSION["ahorcado"]) || isset($_REQUEST["reset"])){
 	$estado = $_SESSION["ahorcado"]->getEstado();
 	$idioma = $_SESSION["ahorcado"]->getIdioma();
 
+	$respuesta["intentos"] = $intentos;
+	$respuesta["letras"] = $letras;
+	$respuesta["pista"] = $palabraPista;
+	$respuesta["pistaPalabra"] = $pista;
+	$respuesta["estado"] = $estado;
+	$respuesta["idioma"] = $idioma;
+
+	/*Convertimos la respuesta en formato json*/
+	echo json_encode($respuesta);
+
 }
 
-$respuesta["intentos"] = $intentos;
-$respuesta["letras"] = $letras;
-$respuesta["pista"] = $palabraPista;
-$respuesta["pistaPalabra"] = $pista;
-$respuesta["estado"] = $estado;
-$respuesta["idioma"] = $idioma;
 
-/*Convertimos la respuesta en formato json*/
-echo json_encode($respuesta);
 
- ?>
+?>

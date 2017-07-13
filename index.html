@@ -258,7 +258,8 @@
 		};	
 
 		document.addEventListener("DOMContentLoaded", function() { 	
-			nuevoJuego()
+			/*resetSession();*/
+			nuevoJuego();
 		});
 
 		/*cuando se pulse el botón todo se reseteará*/
@@ -268,8 +269,47 @@
 
 		}
 
+
+
 		/*Varible para json*/
 		var obj;
+
+		function resetSession(){
+			var xhttp;	
+			xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				/*cuando se ha recibido una respuesta correcta*/
+				if (this.readyState == 4 && this.status == 200) {
+
+					var res = "";
+					/*alert(this.responseText);*/
+					try{
+						obj=JSON.parse(this.responseText);
+						
+						if(!obj.reset){
+							document.getElementById("error").innerHTML = "No se ha podido limpiar la sesión";
+						}
+					
+
+					}catch(e){
+						res = "Error en el servidor: <br>";
+						res += this.responseText+e;
+						document.getElementById("error").innerHTML = res;
+					}
+
+					document.getElementById("respuesta").value = "";
+			
+				}
+			}
+			
+			var url = "funciones.php";
+			
+
+			xhttp.open("POST", url , true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("reset=true");
+		}
+
 		/*Funcion con ajax para conectar con el servidor*/
 		function jugar(resp) {
 			/*Reiniciamos el contexto de canvas*/
@@ -392,6 +432,10 @@
 							
 						}
 
+						if(obj.idioma != null){
+							idioma.value = obj.idioma;
+						}
+
 
 						var let = "";
 						if(obj.letras != null){							
@@ -407,6 +451,22 @@
 								pistaPalabra = "<b> PISTA : </b>"+obj.pistaPalabra+"<br>";
 							}
 							
+						}
+
+						if(obj.idioma == "es"){
+								idioma.value = "es";
+								document.getElementById("res").innerHTML = "RESPUESTA";
+								document.getElementById("titulo").innerHTML = "AHORCADO";
+								document.getElementById("comprobar").value = "COMPROBAR";
+								document.getElementById("nuevo").value = "NUEVO JUEGO";
+								document.getElementById("idioma").value = "Change language";
+						}else if(obj.idioma == "eng"){
+								idioma.value = "eng";
+								document.getElementById("res").innerHTML = "ANSWER";
+								document.getElementById("titulo").innerHTML = "HANGMAN";
+								document.getElementById("comprobar").value = "CHECK";
+								document.getElementById("nuevo").value = "NEW GAME";
+								document.getElementById("idioma").value = "Cambiar idioma";
 						}
 
 						divmensaje.innerHTML = pistaPalabra  + pista  + let;
