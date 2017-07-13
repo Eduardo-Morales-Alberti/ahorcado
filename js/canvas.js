@@ -10,11 +10,12 @@ var pintarFunciones = new Array (
 
 
 var c = document.getElementById("miCanvas");
-
+c.width  = 300;
+c.height = 300;
 var ctx = c.getContext("2d");
 
 function limpiarCtx(){
-	
+	ctx.restore();
 	ctx.clearRect(0,0,300,300);
 	pintarEscenario();
 	
@@ -35,8 +36,8 @@ function pintarEscenario(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 	
@@ -57,8 +58,8 @@ function pintarMastilV() {
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 	/*ctx.save();*/
@@ -79,8 +80,8 @@ function pintarMastilH(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 	/*ctx.save();*/
@@ -103,8 +104,8 @@ function pintarCuerda(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 	/*ctx.save();*/
@@ -125,8 +126,8 @@ function pintarCabeza(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 }
@@ -147,8 +148,8 @@ function pintarTronco(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 }
@@ -168,8 +169,8 @@ function pintarBrazos(){
 	
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 }
@@ -194,8 +195,8 @@ function pintarPiernaIzq(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 }
@@ -218,8 +219,8 @@ function pintarPiernaDrch(){
 
 	ctx.fillStyle = "#aa0000";
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	
 	ctx.restore();
 }
@@ -244,8 +245,8 @@ function acierto(){
 	ctx.bezierCurveTo(170.987058,832.3325712058089,180.72808913641197,823.357113,192.74426,823.357113);
 	ctx.closePath();
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	ctx.restore();
 	ctx.save();
 	ctx.fillStyle = "#aa0000";
@@ -257,8 +258,8 @@ function acierto(){
 	ctx.lineTo(190.93112,849.26428);
 	ctx.closePath();
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	ctx.restore();
 	ctx.save();
 	ctx.fillStyle = "#aa0000";
@@ -271,8 +272,8 @@ function acierto(){
 	ctx.lineTo(677.1972,548.46503);
 	ctx.closePath();
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	ctx.restore();
 	ctx.save();
 	ctx.fillStyle = "#aa0000";
@@ -285,8 +286,8 @@ function acierto(){
 	ctx.lineTo(-682.90771,683.49609);
 	ctx.closePath();
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	ctx.restore();
 	ctx.save();
 	ctx.fillStyle = "#aa0000";
@@ -299,8 +300,8 @@ function acierto(){
 	ctx.lineTo(-910.91553,367.10947);
 	ctx.closePath();
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	ctx.restore();
 	ctx.save();
 	ctx.fillStyle = "#aa0000";
@@ -313,10 +314,10 @@ function acierto(){
 	ctx.lineTo(386.28711,795.54596);
 	ctx.closePath();
 	ctx.fill();
-	ctx.strokeStyle = "#aa0000";
-	ctx.stroke();
+	/*ctx.strokeStyle = "#aa0000";
+	ctx.stroke();*/
 	ctx.restore();
-	ctx.restore();
+	
 
 }
 

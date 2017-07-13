@@ -89,7 +89,7 @@
 
 					
 					<!--</div>-->
-					<canvas id="miCanvas"  width="300" height="300" style="border:1px solid #000000;margin:0 auto;display: block; margin-bottom: 15px;"></canvas>
+					<canvas id="miCanvas"  width="300px" height="300px" style="border:1px solid #000000;margin:0 auto;display: block; margin-bottom: 15px;"></canvas>
 
 					<!--<div class="form-group row" >
 						<div class="col-xs-3" style="text-align:right">
@@ -420,6 +420,8 @@
 		}
 
 		function nuevoJuego(){
+			/*Reiniciamos el contexto de canvas*/
+			limpiarCtx();
 			var xhttp;	
 			xhttp=new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
