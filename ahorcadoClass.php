@@ -37,8 +37,12 @@ Class Ahorcado{
 		return $this->estado;
 	}
 
-	function jugar($respuesta){
+	function getIdioma(){
+		return $this->idioma;
+	}
 
+	function jugar($respuesta){
+		$respuesta = trim(strtolower($respuesta));
 		/* Si es el primer intento elegimos una palabra al azar, el estado lo reasignamos a seguir jugando*/
 		if($this->estado >= 3){
 			$this->reset();

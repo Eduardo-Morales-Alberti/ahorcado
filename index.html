@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Ahorcado</title>
+	<style type="text/css">
+	body{
+		background-color: aliceblue;
+		min-width: 325px;
+		
+	}
+	.centrar{
+		margin: 0 auto;
+	}
+	p{
+		font-size: 15px;
+	}
+
+	input[type="button"]{
+		min-width: 50px;
+		margin-top: 15px;		
+	}
+	/*input.comp[type="button"]{
+		margin-top: 0;		
+		}*/
+
+		/*@media (max-width: 991px) {*/
+			input.comp[type="button"]{
+				margin-top: 15px;		
+			}
+			/*}*/
+
+			@media (max-width: 991px) {
+				input[type="button"]{
+
+					min-width: 25px;
+				}
+			}
+			@media (max-width: 560px) {
+				input[type="button"]{			
+					padding: 0 5px;			
+				}
+		/*.container{
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+		.jumbotron{
+			padding-left: 5px !important;
+			padding-right: 5px !important;
+			}*/
+		}
+		@media (max-width: 400px) {
+			input[type="button"].letras{
+				font-size: 15px;
+
+			}
+			.completo{
+				width: 100%!important;
+				margin: 0 auto !important;
+				/*padding: 0 !important;*/
+			}
+		}
+
+
+
+
+		</style>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="navbar navbar-default" style="margin-top: -10px; background-color: #c4c4c4;margin-bottom: 10px;">
+			<h1 class="text-center" style="font-size: 2em; font-weight: 900;" id="titulo">AHORCADO</h1>
+		</div>
+		<div class="container" >
+			
+			<div class="row text-center" >
+				<div class="col-sm-12 completo">
+					<!--<div class="row text-center" >-->				
+					<!--<b><span id="mensajes" style="font-size:20px">			
+					</span></b>
+					<hr>-->
+					<input id="idioma" type="button" class="btn btn-primary " value="Change language">
+					<input id="leng" type="hidden" value="es">
+					<p>
+						<span id="error">			
+						</span>
+					</p>
+
+					
+					<!--</div>-->
+					<canvas id="miCanvas"  width="300" height="300" style="border:1px solid #000000;margin:0 auto;display: block; margin-bottom: 15px;"></canvas>
+
+					<!--<div class="form-group row" >
+						<div class="col-xs-3" style="text-align:right">
+							<p>
+								PISTA:
+							</p>
+						</div>
+						<div class=" col-xs-8">
+							
+							<input class="form-control text-center" style="font-size: 25px;" type="text" value="" id="pista" disabled>
+						</div>	
+						
+					</div>
+
+					<div class="form-group row" >
+						<div class="col-xs-3" style="text-align:right">
+							<p>
+								USADO:
+							</p>
+						</div>
+						<div class=" col-xs-8">
+							
+							<input class="form-control text-center" style="font-size: 25px;" type="text" value="" id="usado" disabled>
+						</div>	
+						
+					</div>-->
+
+					
+					
+					<div  id="mensajes">
+
+					</div>					
+
+					
+
+					<input type="button" class="btn btn-primary letras " value="Q">
+
+
+
+					<input type="button" class="btn btn-primary letras" value="W">
+
+					<input type="button" class="btn btn-primary letras" value="E">
+
+					<input type="button" class="btn btn-primary letras" value="R">
+
+					<input type="button" class="btn btn-primary letras" value="T">
+
+					<input type="button" class="btn btn-primary letras" value="Y">
+
+					<input type="button" class="btn btn-primary letras" value="U">
+
+					<input type="button" class="btn btn-primary letras" value="I">
+
+					<input type="button" class="btn btn-primary letras" value="O">
+
+					<input type="button" class="btn btn-primary letras" value="P">
+					<br>
+
+
+					<input type="button" class="btn btn-primary letras" value="A">
+
+					<input type="button" class="btn btn-primary letras" value="S">
+
+					<input type="button" class="btn btn-primary letras" value="D">
+
+					<input type="button" class="btn btn-primary letras " value="F">
+
+					<input type="button" class="btn btn-primary letras" value="G">
+
+					<input type="button" class="btn btn-primary letras" value="H">
+
+					<input type="button" class="btn btn-primary letras" value="J">
+
+					<input type="button" class="btn btn-primary letras" value="K">
+
+					<input type="button" class="btn btn-primary letras" value="L">
+
+					<input type="button" class="btn btn-primary letras" value="Ñ">
+					<br>
+
+					<input type="button" class="btn btn-primary letras" value="Z">
+
+					<input type="button" class="btn btn-primary letras" value="X">
+
+					<input type="button" class="btn btn-primary letras" value="C">
+
+					<input type="button" class="btn btn-primary letras" value="V">
+
+					<input type="button" class="btn btn-primary letras" value="B">
+
+					<input type="button" class="btn btn-primary letras" value="N">
+
+					<input type="button" class="btn btn-primary letras" value="M">
+
+
+					
+					<hr>
+					<div class="form-group row">
+						<div class="col-sm-4 col-md-2 col-xs-12" style="text-align:center;font-size:15px;font-weight: bold;">
+
+							<span id="res">RESPUESTA</span>
+
+						</div>
+						<div class="col-sm-8 col-md-10  col-xs-12">
+							<input type="text" class="form-control" id="respuesta" >
+						</div>
+						<div class="  col-xs-6">
+							<input type="button" id="comprobar" class="btn btn-primary comp btn-block" value="COMPROBAR">
+						</div>
+						<div class=" col-xs-6">
+							<input type="button" id="nuevo" class="btn btn-primary comp btn-block" value="NUEVO JUEGO">
+						</div>
+					</div>			
+
+				</div>
+
+			</div>
+		</div>
+
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/canvas.js"></script>
+		<script>
+
+		/*Valiable con todos los input de letras*/
+		var letras = document.getElementsByClassName("letras");
+
+		/*Variable para mostrar el mensaje del servidor*/
+		var divmensaje = document.getElementById("mensajes");
+
+		/*Variable para mostrar toda la respuesta del servidor*/
+		var diverror = document.getElementById("error");
+
+		/*Variable para mostrar la pista*/
+		/*var textpista = document.getElementById("pista");*/
+
+		/*Las letras usadas*/
+		/*var lusadas = document.getElementById("usado");*/
+
+		/*Idioma*/
+		var idioma = document.getElementById("leng");
+
+		/*Bucle para que cuando se pulse una tecla ejecute la función jugar con su valor*/
+		for (var i = letras.length - 1; i >= 0; i--) {
+			letras[i].onclick = function(){
+				jugar(this.value);
+			}
+		};
+
+
+
+		document.getElementById("comprobar").onclick =function(){
+			var url = "funciones.php";	
+			var respuesta = document.getElementById("respuesta").value;
+			if(respuesta.length > 0){
+				jugar(respuesta);
+			}
+
+		};
+
+		document.getElementById("idioma").onclick =function(){
+			cambiarIdioma();
+
+
+		};	
+
+		document.addEventListener("DOMContentLoaded", function() { 	
+			nuevoJuego()
+		});
+
+		/*cuando se pulse el botón todo se reseteará*/
+		document.getElementById("nuevo").onclick =function(){
+			divmensaje.innerHTML = "";
+			nuevoJuego();	
+
+		}
+
+		/*Varible para json*/
+		var obj;
+		/*Funcion con ajax para conectar con el servidor*/
+		function jugar(resp) {
+			/*Reiniciamos el contexto de canvas*/
+			/*limpiarCtx();*/
+
+			/*Variable para la respuesta al servidor*/
+			var xhttp;	
+			xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				/*cuando se ha recibido una respuesta correcta*/
+				if (this.readyState == 4 && this.status == 200) {
+
+					var res = "";
+					/*alert(this.responseText);*/
+					try{
+						obj=JSON.parse(this.responseText);
+
+						
+						var pista = "";
+						if(obj.pista != null){		
+
+							pista =  obj.pista.toUpperCase()+ "<br>";
+
+							
+						}
+
+
+						var let = "";
+						if(obj.letras != null){							
+							let = obj.letras+ "<br>";
+
+						}
+						var pistaPalabra = "";
+						if(obj.pistaPalabra != null){
+							if(idioma.value == "eng"){
+								pistaPalabra = "<b> CLUE : </b>"+obj.pistaPalabra+"<br>";
+							}else{
+								pistaPalabra = "<b> PISTA : </b>"+obj.pistaPalabra+"<br>";
+							}
+							
+						}
+
+						
+						var intentos = "";
+						if(obj.intentos != null){
+							
+							intentos = " <br> Intentos fallidos: "+obj.intentos;
+						}
+
+						var estado = "";
+
+						if(obj.estado != null){
+							switch (obj.estado) {
+								case 0:
+								estado = "Nuevo Juego";
+								break;
+								case 1:
+								estado = "Letra Acertada";
+								break;
+								case 2:
+								estado = "Has fallado";
+								break;
+								case 3:
+								estado = "Has Ganado";
+								break;
+								case 4:
+								estado = "Has Perdido";
+								break;
+								case 5:
+								estado = "Nuevo Juego";
+								break;	
+								default:
+								console.log("Estado: "+obj.estado);
+								break;
+							}
+							estado = "Estado: "+estado+"<br>";
+						}
+
+						divmensaje.innerHTML = estado+pistaPalabra  + pista  + let+intentos;
+
+
+						
+
+					}catch(e){
+						res = "Error en el servidor: <br>";
+						res += this.responseText+e;
+						document.getElementById("error").innerHTML = res;
+					}
+
+					document.getElementById("respuesta").value = "";
+					/*alert(this.responseText);*/
+				}
+			}
+			/*var res = document.getElementById("respuesta").value;	*/
+			var url = "funciones.php";
+			resp = resp.trim().toLowerCase();
+
+			xhttp.open("POST", url , true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("respuesta="+resp);
+		}
+
+		function nuevoJuego(){
+			var xhttp;	
+			xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				/*cuando se ha recibido una respuesta correcta*/
+				if (this.readyState == 4 && this.status == 200) {
+
+					var res = "";
+					/*alert(this.responseText);*/
+					try{
+						obj=JSON.parse(this.responseText);
+
+						var pista = "";
+						if(obj.pista != null){		
+
+							pista =  obj.pista.toUpperCase()+ "<br>";
+
+							
+						}
+
+
+						var let = "";
+						if(obj.letras != null){							
+							let = obj.letras+ "<br>";
+
+						}
+
+						var pistaPalabra = "";
+						if(obj.pistaPalabra != null){
+							if(idioma.value == "eng"){
+								pistaPalabra = "<b> CLUE : </b>"+obj.pistaPalabra+"<br>";
+							}else if(idioma.value == "es"){
+								pistaPalabra = "<b> PISTA : </b>"+obj.pistaPalabra+"<br>";
+							}
+							
+						}
+
+						divmensaje.innerHTML = pistaPalabra  + pista  + let;
+						console.log(obj);
+
+					}catch(e){
+						res = "Error en el servidor: <br>";
+						res += this.responseText+"<br>"+e;
+						document.getElementById("error").innerHTML = res;
+					}
+
+					document.getElementById("respuesta").value = "";
+
+				}
+			}
+
+			var url = "funciones.php";
+
+
+			xhttp.open("POST", url , true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("resetgame=true");
+		}
+
+		function cambiarIdioma(){
+			var xhttp;	
+			xhttp=new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				/*cuando se ha recibido una respuesta correcta*/
+				if (this.readyState == 4 && this.status == 200) {
+
+					var res = "";
+					/*alert(this.responseText);*/
+					try{
+
+						obj=JSON.parse(this.responseText);
+						if(obj.idioma != null && obj.idioma.length > 1){
+							var pista = "";
+							if(obj.pista != null){		
+
+								pista =  obj.pista.toUpperCase()+ "<br>";
+
+
+							}
+
+
+							var let = "";
+							if(obj.letras != null){							
+								let = obj.letras+ "<br>";
+
+							}
+							var pistaPalabra = "";
+							if(obj.pistaPalabra != null){
+								if(obj.idioma == "eng"){
+									pistaPalabra = "<b> CLUE : </b>"+obj.pistaPalabra+"<br>";
+								}else if(obj.idioma == "es"){
+									pistaPalabra = "<b> PISTA : </b>"+obj.pistaPalabra+"<br>";
+								}
+
+							}
+
+							divmensaje.innerHTML = pistaPalabra  + pista  + let;
+							console.log(obj);
+
+							if(obj.idioma == "es"){
+								idioma.value = "es";
+								document.getElementById("res").innerHTML = "RESPUESTA";
+								document.getElementById("titulo").innerHTML = "AHORCADO";
+								document.getElementById("comprobar").value = "COMPROBAR";
+								document.getElementById("nuevo").value = "NUEVO JUEGO";
+								document.getElementById("idioma").value = "Change language";
+							}else if(obj.idioma == "eng"){
+								idioma.value = "eng";
+								document.getElementById("res").innerHTML = "ANSWER";
+								document.getElementById("titulo").innerHTML = "HANGMAN";
+								document.getElementById("comprobar").value = "CHECK";
+								document.getElementById("nuevo").value = "NEW GAME";
+								document.getElementById("idioma").value = "Cambiar idioma";
+							}
+						}
+
+					}catch(e){
+						res = "Error en el servidor: <br>";
+						res += this.responseText;
+						document.getElementById("error").innerHTML = res;
+					}
+
+					document.getElementById("respuesta").value = "";
+
+				}
+			}
+
+			var url = "funciones.php";
+
+
+			xhttp.open("POST", url , true);
+			xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhttp.send("cambiaridioma=Cambiar+Idioma");
+		}
+		</script>
+	</body>
+	</html>
