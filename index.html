@@ -313,7 +313,7 @@
 		/*Funcion con ajax para conectar con el servidor*/
 		function jugar(resp) {
 			/*Reiniciamos el contexto de canvas*/
-			/*limpiarCtx();*/
+			limpiarCtx();
 
 			/*Variable para la respuesta al servidor*/
 			var xhttp;	
@@ -357,6 +357,13 @@
 						if(obj.intentos != null){
 							
 							intentos = " <br> Intentos fallidos: "+obj.intentos;
+							for (var i = 0; i < obj.intentos &&obj.intentos <=8; i++) {
+								pintarFunciones[i]();
+							};
+						}
+
+						if(obj.estado == 3){
+							acierto();
 						}
 
 						var estado = "";
