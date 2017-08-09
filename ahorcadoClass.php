@@ -49,7 +49,7 @@ Class Ahorcado{
 
 		}
 		/*echo "1:".$respuesta;*/
-		if(strlen($respuesta) == 1 ){
+		if(strlen($respuesta) == 1  && preg_match('/\b[a-zA-Z0-9]{1}\b/', $letra)){
 			$letra = $respuesta;
 
 
