@@ -84,7 +84,7 @@ Class Ahorcado{
 					}
 
 					/* Si la palabra elegida es igual que la palabra pista se ha ganado,
-					remplazando las barras */
+					reemplazando las barras */
 					if($this->palabraElegida == preg_replace("/\//", "", implode("", $this->palabraPista))){
 						$this->estado = 3;
 					}
